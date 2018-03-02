@@ -1,4 +1,4 @@
-{% set version = "2.1.1" %}
+{% set version = "2.4" %}
 
 package:
     name: capturer
@@ -7,19 +7,20 @@ package:
 source:
     fn: capturer-{{ version }}.tar.gz
     url: https://pypi.io/packages/source/c/capturer/capturer-{{ version }}.tar.gz
-    sha256: 6d892baca28c32ba912d96dfc5d40972090437d7d8d1738453969a0700a272e4
+    sha256: 090142a58f3f85def3a7dd55d9024d0d1a86d1a88aaf9317c0f146244994a615
 
 build:
     number: 0
     skip: True  # [win]
-    script: python setup.py install --single-version-externally-managed --record record.txt
+    script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
     build:
         - python
-        - setuptools
+        - pip
     run:
         - python
+        - humanfriendly
 
 test:
     imports:
