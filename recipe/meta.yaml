@@ -22,6 +22,10 @@ requirements:
     - humanfriendly >=8.0
 
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - capturer
 
