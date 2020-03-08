@@ -19,7 +19,7 @@ requirements:
     - pip
   run:
     - python
-    - humanfriendly >=2.1
+    - humanfriendly >=8.0
 
 test:
   imports:
