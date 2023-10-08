@@ -1,24 +1,25 @@
+{% set name = "capturer" %}
 {% set version = "3.0" %}
 
 package:
-  name: capturer
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/capturer/capturer-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/capturer-{{ version }}.tar.gz
   sha256: 4849032f6a670c02be434c484a0abf43c870a1efafafbfffd2e6f1c1f7ef5001
 
 build:
-  number: 6
-  skip: true  # [win]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
+    - python >=3.6
     - humanfriendly >=8.0
 
 test:
